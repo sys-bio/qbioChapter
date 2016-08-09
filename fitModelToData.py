@@ -107,9 +107,6 @@ for n in range (NSamples):
       k1Sample.append (pp['k1'])
       k2Sample.append (pp['k2'])
    
-plt.xlabel('k1'); plt.ylabel('k2')
-plt.plot (k1Sample, k2Sample, '.b')
-
 # Compute the mean values of the k1 and k2 samples
 meank1 = np.mean (k1Sample); meank2 = np.mean (k2Sample)
 
@@ -125,12 +122,12 @@ print 'Computed 95 percent percentiles'
 print 'k1: ', meank1, "+/- ", plusk1, minusk1
 print 'k2: ', meank2, "+/- ", plusk2, minusk2
 
-plt.hist (k1Sample, 12)
+plt.hist (k1Sample, 12, color='peachpuff')
 plt.ylabel('Frequency'); 
 plt.xlabel ('k1'); plt.title ('k1 variation')
 plt.savefig('k1Distribution.pdf')
 plt.show()
-plt.hist (k2Sample, 12)
+plt.hist (k2Sample, 12, color='peachpuff')
 plt.ylabel('Frequency'); 
 plt.xlabel ('k2'); plt.title ('k2 variation');
 plt.savefig('k2Distribution.pdf')
@@ -138,7 +135,7 @@ plt.show()
 
 # Scatter plot of k1 versus k2
 plt.xlim((0.1, 0.6)); plt.ylim ((0.1, 0.5))
-plt.plot (k1Sample, k2Sample, '.')
+plt.plot (k1Sample, k2Sample, '.', color='cornflowerblue')
 plt.xlabel ('k1'); plt.ylabel ('k2')
 plt.title ('Scatter plot of k1 against k2')
 plt.savefig('k1_k2_scatter.pdf')
