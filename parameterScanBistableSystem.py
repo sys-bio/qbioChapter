@@ -11,12 +11,14 @@ r = te.loada('''
     S1 = 0;
 ''')
 
-S1Ref = 0.1
-#result = r.simulate (0, 12, 100, ['time', 'S1'])
+S1Initial = 0.1
 for x in plt.arange (0.1, 2, 0.2): 
     m = r.simulate (0, 12, 100, ['Time', 'S1'])
     plt.plot (m[:,0], m[:,1], linewidth=2)  
-    S1Ref = S1Ref + 0.1
-    r.S1 = S1Ref
-    
+    S1Initial = S1Initial + 0.1
+    r.S1 = S1Initial
+ 
+plt.xlabel ('Time', fontsize=16)   
+plt.ylabel ('Concentration of S1', fontsize=16)
+plt.title ('Bistable system showing high and low states', y=1.08, fontsize=16)
 plt.show()
