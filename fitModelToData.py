@@ -19,8 +19,8 @@ nDataPoints = 24
 m = r.simulate (0, 20, nDataPoints)
 
 # Change this index to use a different variable
-S2Index = 2
-x_data = m[:,0]; y_data = m[:,S2Index]
+SIndex = 2
+x_data = m[:,0]; y_data = m[:,SIndex]
 y_weight = np.empty([nDataPoints])
 for i in range (0, len (y_data)):
     y_weight[i] = 0.05 # standard deviation of noise
@@ -34,7 +34,7 @@ def my_ls_func(p):
        r.model[toFit[i]] = pp[toFit[i]]
     m = r.simulate (0, 20, nDataPoints)
     # Just return S2
-    return m[:,S2Index]
+    return m[:,SIndex]
 
 # Compute the residuals between objective and experimental data
 def weightedResiduals(p):
