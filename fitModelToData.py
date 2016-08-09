@@ -18,10 +18,12 @@ nDataPoints = 24
 # Create the experimental data
 m = r.simulate (0, 20, nDataPoints)
 
-x_data = m[:,0]; y_data = m[:,2]
+# Change this index to use a different variable
+S2Index = 2
+x_data = m[:,0]; y_data = m[:,S2Index]
 y_weight = np.empty([nDataPoints])
 for i in range (0, len (y_data)):
-    y_weight[i] = 0.05
+    y_weight[i] = 0.05 # standard deviation of noise
     y_data[i] = y_data[i] + np.random.normal (0, y_weight[i]); # Add noise
 
 # Compute the simulation at the current parameter values
@@ -32,7 +34,7 @@ def my_ls_func(p):
        r.model[toFit[i]] = pp[toFit[i]]
     m = r.simulate (0, 20, nDataPoints)
     # Just return S2
-    return m[:,2]
+    return m[:,S2Index]
 
 # Compute the residuals between objective and experimental data
 def weightedResiduals(p):
